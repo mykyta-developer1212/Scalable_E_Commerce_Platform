@@ -1,5 +1,5 @@
 Проєкт ялвяє собою REST-API інтернет-магазина, побудоване за принципом мікросервісної архітектури. Він складається з трьох незалежних сервісів: User Service, ProductService, Order Service. Кожен сервіс виконує окрему бізнес-функцію, має власну базу даних PostgreSQL і запускається в окремому Docker-контейнері, та взаємодіє через HTTP-запити. 
-Для розробки використано Node.js, Express.js, Docker, PostgreSQL та DockerCompose. Обмін даними між сервісами та клієнтом здійснюється через HTTP-запити за допомогою REST API. 
+Для розробки використано Node.js, Express.js, Docker, PostgreSQL, DockerCompose, Prisma. Обмін даними між сервісами та клієнтом здійснюється через HTTP-запити за допомогою REST API. 
 
 User Service відповідає за роботу роботу з користувачами:
 • реєстрація користувачів;
@@ -14,8 +14,8 @@ GET    /users
 GET    /users/:id
 POST   /users/register
 POST   /users/login
-PUT    /users/:id
-DELETE /users/:id
+PUT    /profile
+DELETE /profile
 
 Product Service відповідає за роботу з товарами:
 • перегляд каталогу;
