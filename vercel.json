@@ -1,15 +1,26 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "index.js",
-      "use": "@vercel/node"
+  "services": {
+    "api_gateway": {
+      "root": "api-gateway/"
+    },
+    "user_service": {
+      "root": "user-service/"
+    },
+    "product_service": {
+      "root": "product-service/"
+    },
+    "order_service": {
+      "root": "order-service/"
     }
-  ],
+  },
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.js"
-    }
+    { "source": "/users/(.*)", "destination": "user_service" },
+    { "source": "/users", "destination": "user_service" },
+    { "source": "/products/(.*)", "destination": "product_service" },
+    { "source": "/products", "destination": "product_service" },
+    { "source": "/orders/(.*)", "destination": "order_service" },
+    { "source": "/orders", "destination": "order_service" },
+    { "source": "/(.*)", "destination": "api_gateway" }
   ]
 }
