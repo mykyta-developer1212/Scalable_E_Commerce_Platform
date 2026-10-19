@@ -186,51 +186,30 @@ app.post("/users/login", async (req, res) => {
 
 });
 
-app.get("/users", async (req, res) => {
-
-    await proxyRequest(
-        res,
-        `${USER_URL}/users`
-    );
-
+app.get(["/users", "/"], async (req, res) => {
+    await proxyRequest(res, `${USER_URL}/users`);
 });
 
-app.get("/users/:id", async (req, res) => {
 
-    await proxyRequest(
-        res,
-        `${USER_URL}/users/${req.params.id}`
-    );
-
+app.get(["/users/:id", "/:id"], async (req, res) => {
+    await proxyRequest(res, `${USER_URL}/users/${req.params.id}`);
 });
 
-app.put("/users/:id", async (req, res) => {
 
-    await proxyRequest(
-        res,
-        `${USER_URL}/users/${req.params.id}`,
-        {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(req.body)
-        }
-    );
-
+app.put(["/users/:id", "/:id"], async (req, res) => {
+    await proxyRequest(res, `${USER_URL}/users/${req.params.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(req.body)
+    });
 });
 
-app.delete("/users/:id", async (req, res) => {
-
-    await proxyRequest(
-        res,
-        `${USER_URL}/users/${req.params.id}`,
-        {
-            method: "DELETE"
-        }
-    );
-
+app.delete(["/users/:id", "/:id"], async (req, res) => {
+    await proxyRequest(res, `${USER_URL}/users/${req.params.id}`, {
+        method: "DELETE"
+    });
 });
+
 
 app.get("/profile", async (req, res) => {
 
@@ -263,38 +242,20 @@ app.put("/profile", async (req, res) => {
 
 });
 
-app.get("/products", async (req, res) => {
-
-    await proxyRequest(
-        res,
-        `${PRODUCT_URL}/products`
-    );
-
+app.get(["/products", "/"], async (req, res) => {
+    await proxyRequest(res, `${PRODUCT_URL}/products`);
 });
 
-app.get("/products/:id", async (req, res) => {
-
-    await proxyRequest(
-        res,
-        `${PRODUCT_URL}/products/${req.params.id}`
-    );
-
+app.get(["/products/:id", "/:id"], async (req, res) => {
+    await proxyRequest(res, `${PRODUCT_URL}/products/${req.params.id}`);
 });
 
-app.post("/products", async (req, res) => {
-
-    await proxyRequest(
-        res,
-        `${PRODUCT_URL}/products`,
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(req.body)
-        }
-    );
-
+app.post(["/products", "/"], async (req, res) => {
+    await proxyRequest(res, `${PRODUCT_URL}/products`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(req.body)
+    });
 });
 
 app.put("/products/:id", async (req, res) => {
@@ -325,22 +286,12 @@ app.delete("/products/:id", async (req, res) => {
 
 });
 
-app.get("/orders", async (req, res) => {
-
-    await proxyRequest(
-        res,
-        `${ORDER_URL}/orders`
-    );
-
+app.get(["/orders", "/"], async (req, res) => {
+    await proxyRequest(res, `${ORDER_URL}/orders`);
 });
 
-app.get("/orders/:id", async (req, res) => {
-
-    await proxyRequest(
-        res,
-        `${ORDER_URL}/orders/${req.params.id}`
-    );
-
+app.get(["/orders/:id", "/:id"], async (req, res) => {
+    await proxyRequest(res, `${ORDER_URL}/orders/${req.params.id}`);
 });
 
 app.post("/orders", async (req, res) => {
