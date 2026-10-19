@@ -1,18 +1,15 @@
 {
-  "services": {
-    "product_service": {
-      "root": "product-service/"
-    },
-    "order_service": {
-      "root": "order-service/"
-    },
-    "user_service": {
-      "root": "user-service/"
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@vercel/node"
     }
-  },
+  ],
   "rewrites": [
-    { "source": "/products/(.*)", "destination": "product_service" },
-    { "source": "/orders/(.*)", "destination": "order_service" },
-    { "source": "/users/(.*)", "destination": "user_service" }
+    {
+      "source": "/(.*)",
+      "destination": "/index.js"
+    }
   ]
 }

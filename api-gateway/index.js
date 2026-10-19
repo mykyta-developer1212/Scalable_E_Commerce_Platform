@@ -40,9 +40,9 @@ async function fetchRetry(url, options = {}, attempts = 2) {
 
 async function proxyRequest(res, url, options = {}) {
     try {
-        console.log("Request:", url);
+        console.log("Request to service:", url);
         const response = await fetchRetry(url, options);
-        console.log("Status:", response.status, response.statusText);
+        console.log("Response status:", response.status, response.statusText);
 
         const contentType = response.headers.get("content-type");
         if (contentType && contentType.includes("application/json")) {
@@ -51,7 +51,7 @@ async function proxyRequest(res, url, options = {}) {
         }
 
         const text = await response.text();
-        console.error("Service returned:", text.substring(0, 500));
+        console.error("Service returned text/html:", text.substring(0, 500));
         return res.status(response.status).send(text);
     } catch (error) {
         console.error("Gateway error:", error);
@@ -130,7 +130,7 @@ usersRouter.delete("/:id", async (req, res) => {
     });
 });
 
-app.use("/users", usersRouter);
+app.use(["/users", "/"], usersRouter);
 
 const productsRouter = express.Router();
 
@@ -164,7 +164,7 @@ productsRouter.delete("/:id", async (req, res) => {
     });
 });
 
-app.use("/products", productsRouter);
+app.use(["/products", "/"], productsRouter);
 
 const ordersRouter = express.Router();
 
@@ -198,7 +198,7 @@ ordersRouter.delete("/:id", async (req, res) => {
     });
 });
 
-app.use("/orders", ordersRouter);
+app.use(["/orders", "/"], ordersRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
