@@ -4,9 +4,9 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-const USER_URL = process.env.USER_URL ? process.env.USER_URL.replace(/\/\$/, "") : "";
-const PRODUCT_URL = process.env.PRODUCT_URL ? process.env.PRODUCT_URL.replace(/\/\$/, "") : "";
-const ORDER_URL = process.env.ORDER_URL ? process.env.ORDER_URL.replace(/\/\$/, "") : "";
+const USER_URL = process.env.USER_URL ? process.env.USER_URL.replace(/\/$/, "") : "";
+const PRODUCT_URL = process.env.PRODUCT_URL ? process.env.PRODUCT_URL.replace(/\/$/, "") : "";
+const ORDER_URL = process.env.ORDER_URL ? process.env.ORDER_URL.replace(/\/$/, "") : "";
 
 async function fetchWithTimeout(url, options = {}, timeout = 10000) {
     const controller = new AbortController();
@@ -130,7 +130,7 @@ usersRouter.delete("/:id", async (req, res) => {
     });
 });
 
-app.use(["/users", "/"], usersRouter);
+app.use("/users", usersRouter);
 
 const productsRouter = express.Router();
 
@@ -164,7 +164,7 @@ productsRouter.delete("/:id", async (req, res) => {
     });
 });
 
-app.use(["/products", "/"], productsRouter);
+app.use("/products", productsRouter);
 
 const ordersRouter = express.Router();
 
@@ -198,7 +198,7 @@ ordersRouter.delete("/:id", async (req, res) => {
     });
 });
 
-app.use(["/orders", "/"], ordersRouter);
+app.use("/orders", ordersRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
