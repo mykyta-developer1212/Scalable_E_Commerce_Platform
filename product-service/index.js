@@ -21,3 +21,5 @@ app.get("/health", (req, res) => {
 app.listen(PORT, () => {
     console.log(`Product service running on ${PORT}`);
 });
+
+module.exports = app;
