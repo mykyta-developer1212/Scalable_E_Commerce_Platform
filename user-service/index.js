@@ -217,7 +217,7 @@ app.put("/profile", auth, async (req, res) => {
 
 });
 
-app.get("/users", async (req, res) => {
+app.get(["/", "/users"], async (req, res) => {
 
     try {
 
@@ -241,8 +241,8 @@ app.get("/users", async (req, res) => {
 
 });
 
-app.get("/users/:id", async (req, res) => {
-
+app.get(["/:id", "/users/:id"], async (req, res) => {
+    
     try {
 
         const result = await pool.query(

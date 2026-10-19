@@ -3,14 +3,14 @@ const router = express.Router();
 
 const controller = require("../controllers/inventory.controller");
 
-router.get("/", controller.getInventory);
+router.get(["/", "/inventory"], controller.getInventory);
 
-router.get("/:productId", controller.getInventoryItem);
+router.get(["/:productId", "/inventory/:productId"], controller.getInventoryItem);
 
-router.post("/", controller.createInventoryItem);
+router.post(["/", "/inventory"], controller.createInventoryItem);
 
-router.patch("/:productId", controller.updateQuantity);
+router.patch(["/:productId", "/inventory/:productId"], controller.updateQuantity);
 
-router.delete("/:productId", controller.deleteInventoryItem);
+router.delete(["/:productId", "/inventory/:productId"], controller.deleteInventoryItem);
 
 module.exports = router;
