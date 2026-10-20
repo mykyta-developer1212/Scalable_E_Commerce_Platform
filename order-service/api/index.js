@@ -5,7 +5,7 @@ const app = express();
 
 app.use(express.json());
 
-const orderRoutes = require("./routes/orderRoutes");
+const orderRoutes = require("../routes/orderRoutes");
 app.use("/orders", orderRoutes);
 
 const PORT = process.env.PORT || 3003;
