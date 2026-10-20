@@ -1,7 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const pool = require("./db/db");
+const pool = require("../db/db");
 
 const app = express();
 
@@ -307,6 +307,4 @@ app.get("/health", (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
-    console.log(`User Service running on ${PORT}`);
-});
+module.exports = app;

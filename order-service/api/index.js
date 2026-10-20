@@ -16,8 +16,4 @@ app.get("/health", (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
-  console.log(`Order Service running on ${PORT}`);
-});
-
 module.exports = app;
