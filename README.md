@@ -8,7 +8,7 @@ User Service відповідає за роботу роботу з корист
 • редагування інформації;
 • видалення користувача;
 Cервіс доступний за адресою 
-https://exciting-freedom-production-f0df.up.railway.app/
+https://scalable-e-commerce-platform-hjew.vercel.app/
 Маршрути:
 GET    /users
 GET    /users/:id
@@ -22,14 +22,14 @@ Product Service відповідає за роботу з товарами:
 • пошук товару;
 
 Сервіс доступний за адресою:
-https://exciting-freedom-production-f0df.up.railway.app/
+https://scalable-e-commerce-platform-hjew.vercel.app/
 Маршрути:
 GET    /products
 GET    /products/:id
 
 Order Service відповідає за створення та керування замовленнями:
 Cервіс доступний за адресою:
-https://exciting-freedom-production-f0df.up.railway.app/
+https://scalable-e-commerce-platform-hjew.vercel.app/
 Маршрути:
 • перегляд усіх замовлень;
 • перегляд замовлення за ID;
